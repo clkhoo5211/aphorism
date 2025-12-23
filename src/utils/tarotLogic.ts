@@ -106,7 +106,7 @@ export const getCardImageUrl = (card: TarotCard, deckId: TarotDeckId): string =>
   // All cards (Major and Minor Arcana) are now available locally
   // Format: ar00.jpg (Major), w01.jpg, c01.jpg, s01.jpg, p01.jpg (Minor)
   if (filename.endsWith('.jpg')) {
-    return `/assets/tarot-cards/${deckDir}/${filename}`;
+    return `/aphorism/assets/tarot-cards/${deckDir}/${filename}`;
   }
   
   // Fallback to original URL if filename extraction fails
