@@ -47,6 +47,14 @@ export const Header = () => {
           >
             DIVINATION MATRIX
           </NavLink>
+          <NavLink
+            to="/tip"
+            className={({ isActive }) =>
+              `transition-colors hover:text-amber-400 ${isActive ? 'text-amber-400' : 'text-slate-400'}`
+            }
+          >
+            TIP COFFEE
+          </NavLink>
           {/* Temporarily commented out */}
           {/* <a href="#" className="text-slate-500 hover:text-cyan-400 transition-colors cursor-not-allowed">RESOURCES</a> */}
         </nav>
