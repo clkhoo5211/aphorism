@@ -2,7 +2,8 @@ import { motion } from 'framer-motion';
 import { Copy, Check, Coffee, Wallet, ExternalLink } from 'lucide-react';
 import { useState } from 'react';
 
-const WALLET_ADDRESS = '0xE109929342703eDD45DB488bf33983B2a48A6C4F';
+// Get wallet address from environment variable, with fallback
+const WALLET_ADDRESS = import.meta.env.VITE_WALLET_ADDRESS || '0xE109929342703eDD45DB488bf33983B2a48A6C4F';
 
 const EVM_CHAINS = [
   { name: 'Ethereum', symbol: 'ETH', explorer: 'https://etherscan.io/address/' },
