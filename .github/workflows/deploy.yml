@@ -36,6 +36,25 @@ jobs:
         env:
           VITE_WALLET_ADDRESS: ${{ vars.VITE_WALLET_ADDRESS }}
 
+      - name: Create 404.html redirect
+        run: |
+          cat > dist/404.html << 'EOF'
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Redirecting...</title>
+            <script>window.location.replace('/aphorism/');</script>
+            <meta http-equiv="refresh" content="0; url=/aphorism/">
+            <link rel="canonical" href="/aphorism/">
+          </head>
+          <body>
+            <p>Redirecting to <a href="/aphorism/">/aphorism/</a>...</p>
+          </body>
+          </html>
+          EOF
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
