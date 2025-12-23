@@ -1,73 +1,69 @@
-# React + TypeScript + Vite
+# TECHY REFLECT - Aphorism Blog
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern web application featuring tarot card readings and Chinese divination systems.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Tarot Cards
+- **4 Decks**: Rider-Waite, Everyday Hero, Esoteric Lotus, Greek Mythic
+- **78 Cards per Deck**: All cards with local images (312 total images)
+- **6 Spreads**: 
+  - Single Card
+  - Past, Present, Future
+  - Mind, Body, Spirit
+  - Situation, Action, Outcome
+  - Celtic Cross (10 cards)
+  - Horseshoe Spread (7 cards)
+- **Card Features**:
+  - Fisher-Yates shuffle algorithm for proper randomization
+  - Card reversal support
+  - Detailed interpretation panel
+  - Visual card selection feedback
 
-## React Compiler
+### Chinese Divination Systems
+- 观音灵签 (Guan Yin Oracle) - 100 lots
+- 黄大仙 (Wong Tai Sin) - 100 lots
+- 月老 (Yue Lao) - 100 lots
+- 吕祖 (Lv Zu) - 100 lots
+- 妈祖 (Mazu) - 100 lots
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+- **Frontend**: React + TypeScript + Vite
+- **Styling**: Tailwind CSS
+- **Animations**: Framer Motion
+- **Routing**: React Router
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Installation
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Project Structure
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+techy-aphorism-blog/
+├── src/
+│   ├── components/
+│   │   ├── Tarot/          # Tarot card components
+│   │   └── Divination/     # Divination components
+│   ├── data/               # Data files (cards, spreads, divination)
+│   └── utils/              # Utility functions
+├── public/
+│   └── assets/
+│       └── tarot-cards/    # Local tarot card images (312 images)
+└── scripts/                # Python scripts for data collection
+```
+
+## Development
+
+The project includes Python scripts in the `scripts/` directory for:
+- Collecting divination data from online sources
+- Downloading tarot card images
+- Generating TypeScript data files
+
+## License
+
+MIT
