@@ -18,6 +18,28 @@ dist-ssr
 .idea
 .DS_Store
 *.suo
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv
+
+# Scripts (development only, not needed in production)
+scripts/
+*.py
+!requirements.txt
+
+# Scraping logs and data files
+*_scraping.log
+scraping*.log
+collected_divination_data.json
+minor_arcana_generated.ts
 *.ntvs*
 *.njsproj
 *.sln
