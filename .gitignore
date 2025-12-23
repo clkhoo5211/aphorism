@@ -49,6 +49,7 @@ minor_arcana_generated.ts
 
 # Documentation files (excluded from repository)
 *.md
+!README.md
 
 *.ntvs*
 *.njsproj
