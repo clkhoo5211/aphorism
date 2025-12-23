@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { TarotCard } from './TarotCard';
 import { getCardDisplayInfo } from '../../utils/tarotLogic';
 import type { TarotSpread } from '../../data/tarotSpreads';

@@ -1,4 +1,4 @@
-import { Terminal, Cpu } from 'lucide-react';
+import { Cpu } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { NavLink, Link } from 'react-router-dom';
 
