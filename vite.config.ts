@@ -4,22 +4,6 @@ import tailwindcss from '@tailwindcss/vite'
 import { VitePWA } from 'vite-plugin-pwa'
 import path from 'path'
 
-// Custom plugin to handle wagmi resolution - must run before commonjs resolver
-const wagmiResolver = () => ({
-  name: 'wagmi-resolver',
-  enforce: 'pre' as const, // Run before other plugins
-  resolveId(id: string) {
-    if (id === 'wagmi') {
-      // Resolve wagmi to its ESM export
-      return {
-        id: path.resolve(__dirname, 'node_modules/wagmi/dist/esm/exports/index.js'),
-        external: false
-      }
-    }
-    return null
-  }
-})
-
 // https://vite.dev/config/
 export default defineConfig({
   base: '/aphorism/',
@@ -29,8 +13,6 @@ export default defineConfig({
     // Fix wagmi module resolution
     dedupe: ['wagmi', '@wagmi/core'],
     alias: {
-      // Direct alias for wagmi to bypass package.json resolution
-      'wagmi': path.resolve(__dirname, 'node_modules/wagmi/dist/esm/exports/index.js'),
       // Path aliases
       '@': path.resolve(__dirname, 'src'),
       // Prevent Node.js-only modules from being bundled for browser
@@ -86,8 +68,9 @@ export default defineConfig({
   },
   build: {
     commonjsOptions: {
-      // Exclude wagmi and @wagmi packages from commonjs transformation - they're pure ESM
-      exclude: [/wagmi/, /@wagmi/, /viem/],
+      // Exclude wagmi and related packages from commonjs transformation - they're pure ESM
+      // Use negative lookahead to exclude these packages
+      exclude: [/node_modules\/wagmi/, /node_modules\/@wagmi/, /node_modules\/viem/, /node_modules\/@reown/],
       include: [/qrcode/, /node_modules/],
       transformMixedEsModules: true,
       defaultIsModuleExports: 'auto',
@@ -109,7 +92,6 @@ export default defineConfig({
     }
   },
   plugins: [
-    wagmiResolver(),
     react(),
     tailwindcss(),
     // Conditionally include PWA plugin - skip in production build to avoid wagmi resolution issues
