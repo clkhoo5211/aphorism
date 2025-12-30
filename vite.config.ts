@@ -4,6 +4,21 @@ import tailwindcss from '@tailwindcss/vite'
 import { VitePWA } from 'vite-plugin-pwa'
 import path from 'path'
 
+// Custom plugin to handle wagmi resolution
+const wagmiResolver = () => ({
+  name: 'wagmi-resolver',
+  resolveId(id: string) {
+    if (id === 'wagmi') {
+      // Resolve wagmi to its ESM export
+      return {
+        id: 'wagmi/dist/esm/exports/index.js',
+        external: false
+      }
+    }
+    return null
+  }
+})
+
 // https://vite.dev/config/
 export default defineConfig({
   base: '/aphorism/',
@@ -91,6 +106,7 @@ export default defineConfig({
     }
   },
   plugins: [
+    wagmiResolver(),
     react(),
     tailwindcss(),
     // Conditionally include PWA plugin - skip in production build to avoid wagmi resolution issues
