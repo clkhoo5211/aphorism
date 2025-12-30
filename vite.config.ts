@@ -4,14 +4,15 @@ import tailwindcss from '@tailwindcss/vite'
 import { VitePWA } from 'vite-plugin-pwa'
 import path from 'path'
 
-// Custom plugin to handle wagmi resolution
+// Custom plugin to handle wagmi resolution - must run before commonjs resolver
 const wagmiResolver = () => ({
   name: 'wagmi-resolver',
+  enforce: 'pre' as const, // Run before other plugins
   resolveId(id: string) {
     if (id === 'wagmi') {
       // Resolve wagmi to its ESM export
       return {
-        id: 'wagmi/dist/esm/exports/index.js',
+        id: path.resolve(__dirname, 'node_modules/wagmi/dist/esm/exports/index.js'),
         external: false
       }
     }
@@ -28,6 +29,8 @@ export default defineConfig({
     // Fix wagmi module resolution
     dedupe: ['wagmi', '@wagmi/core'],
     alias: {
+      // Direct alias for wagmi to bypass package.json resolution
+      'wagmi': path.resolve(__dirname, 'node_modules/wagmi/dist/esm/exports/index.js'),
       // Path aliases
       '@': path.resolve(__dirname, 'src'),
       // Prevent Node.js-only modules from being bundled for browser
