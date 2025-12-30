@@ -2,8 +2,10 @@
 // This is a workaround for wagmi v3.1.2 type definition issues
 // The hooks exist at runtime but TypeScript can't find the type definitions
 
+/// <reference types="react" />
+
 declare module 'wagmi' {
-  import type React from 'react'
+  import type { ComponentType, ReactNode } from 'react'
   
   // These hooks exist at runtime - declare them here for TypeScript
   export function useReadContract<T = any>(config?: any): any
@@ -15,8 +17,5 @@ declare module 'wagmi' {
   export function useSendTransaction(): any
   
   // Provider component
-  export const WagmiProvider: React.ComponentType<{ config: any; children: React.ReactNode }>
-  
-  // Re-export other wagmi exports (these should exist)
-  export * from '@wagmi/core'
+  export const WagmiProvider: ComponentType<{ config: any; children: ReactNode }>
 }

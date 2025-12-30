@@ -10,6 +10,8 @@ export default defineConfig({
   resolve: {
     conditions: ['import', 'module', 'browser', 'default'],
     mainFields: ['module', 'main'],
+    // Fix wagmi module resolution
+    dedupe: ['wagmi', '@wagmi/core'],
     alias: {
       // Path aliases
       '@': path.resolve(__dirname, 'src'),
@@ -34,7 +36,16 @@ export default defineConfig({
     }
   },
   optimizeDeps: {
-    include: ['wagmi', '@reown/appkit', '@reown/appkit-adapter-wagmi', 'buffer', 'process', 'qrcode'],
+    include: [
+      'wagmi',
+      '@wagmi/core',
+      '@reown/appkit',
+      '@reown/appkit-adapter-wagmi',
+      'buffer',
+      'process',
+      'qrcode',
+      'viem'
+    ],
     exclude: ['pino', 'pino-pretty', 'pino-abstract-transport'], // Exclude pino packages from optimization
     esbuildOptions: {
       alias: {
@@ -57,9 +68,11 @@ export default defineConfig({
   },
   build: {
     commonjsOptions: {
-      include: [/wagmi/, /qrcode/, /node_modules/],
+      include: [/wagmi/, /@wagmi/, /qrcode/, /node_modules/],
       transformMixedEsModules: true,
-      defaultIsModuleExports: 'auto'
+      defaultIsModuleExports: 'auto',
+      // Force ESM for wagmi
+      requireReturnsDefault: 'auto'
     },
     rollupOptions: {
       // Externalize Node.js-only modules that shouldn't be in browser bundle
