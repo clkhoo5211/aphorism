@@ -149,9 +149,10 @@ export function useContractWriteDirect(): DirectContractWriteReturn {
           throw new Error(`Invalid transaction hash returned: ${txHash}`)
         }
 
-        setHash(txHash)
+        const hash = txHash as `0x${string}`
+        setHash(hash)
         setIsPending(false)
-        writeCallbacks?.onSuccess?.(txHash)
+        writeCallbacks?.onSuccess?.(hash)
       } catch (err: any) {
         setIsPending(false)
         setIsError(true)
