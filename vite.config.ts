@@ -68,10 +68,11 @@ export default defineConfig({
   },
   build: {
     commonjsOptions: {
-      include: [/wagmi/, /@wagmi/, /qrcode/, /node_modules/],
+      // Exclude wagmi and @wagmi packages from commonjs transformation - they're pure ESM
+      exclude: [/wagmi/, /@wagmi/, /viem/],
+      include: [/qrcode/, /node_modules/],
       transformMixedEsModules: true,
       defaultIsModuleExports: 'auto',
-      // Force ESM for wagmi
       requireReturnsDefault: 'auto'
     },
     rollupOptions: {
