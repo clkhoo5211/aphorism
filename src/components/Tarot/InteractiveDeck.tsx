@@ -58,24 +58,30 @@ export const InteractiveDeck: React.FC<InteractiveDeckProps> = ({
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto flex flex-col items-center">
-      <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-4 perspective-1000">
+    <div className="w-full max-w-4xl mx-auto flex flex-col items-center px-2">
+      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2 sm:gap-3 md:gap-4 perspective-1000">
         <AnimatePresence>
           {Array.from({ length: 24 }).map((_, index) => (
             <motion.div
               key={index}
-              className="relative cursor-pointer group"
+              className="relative cursor-pointer group touch-manipulation"
               style={{
-                width: '80px',
-                height: '120px',
+                width: 'clamp(60px, 15vw, 80px)',
+                height: 'clamp(90px, 22.5vw, 120px)',
               }}
               initial={{ opacity: 0, scale: 0.8, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.8 }}
               transition={{ delay: index * 0.03 }}
               whileHover={{ scale: 1.1, zIndex: 10, y: -10 }}
-              whileTap={{ scale: 0.95 }}
+              whileTap={{ scale: 0.9 }}
               onClick={() => handleCardClick()}
+              onTouchStart={(e) => {
+                e.currentTarget.style.transform = 'scale(0.9)';
+              }}
+              onTouchEnd={(e) => {
+                e.currentTarget.style.transform = '';
+              }}
             >
               {/* Card Back */}
               <div className="w-full h-full rounded-lg border-2 border-purple-500/50 bg-gradient-to-br from-purple-900 via-indigo-900 to-purple-900 shadow-lg overflow-hidden transition-all duration-300 group-hover:shadow-purple-500/50 group-hover:border-purple-400">

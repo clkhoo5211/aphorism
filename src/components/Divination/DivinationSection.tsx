@@ -37,7 +37,7 @@ export const DivinationSection: React.FC = () => {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto py-12 px-6">
+    <div className="w-full max-w-4xl mx-auto py-6 sm:py-12 px-4 sm:px-6">
       <div className="flex flex-col items-center space-y-12">
         {/* Intro Section */}
         {!lot && !isDrawing && (
@@ -86,20 +86,20 @@ export const DivinationSection: React.FC = () => {
               </div>
             </div>
 
-            <form onSubmit={handleDraw} className="mt-8 relative group">
+            <form onSubmit={handleDraw} className="mt-6 sm:mt-8 relative group">
               <input
                 type="text"
                 value={question}
                 onChange={(e) => setQuestion(e.target.value)}
                 placeholder="Pose your question to the unified oracle..."
-                className="w-full bg-slate-900/50 border-2 border-slate-800 rounded-2xl px-6 py-4 text-white placeholder:text-slate-600 focus:outline-none focus:border-cyan-500/50 transition-all font-light"
+                className="w-full bg-slate-900/50 border-2 border-slate-800 rounded-2xl px-4 sm:px-6 py-3 sm:py-4 pr-24 sm:pr-28 text-white placeholder:text-slate-600 focus:outline-none focus:border-cyan-500/50 transition-all font-light text-sm sm:text-base"
               />
               <button
                 type="submit"
-                className="absolute right-2 top-2 bottom-2 px-6 bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white rounded-xl font-black uppercase text-xs tracking-widest transition-all flex items-center gap-2 shadow-lg shadow-cyan-500/20"
+                className="absolute right-2 top-2 bottom-2 px-4 sm:px-6 bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 active:scale-95 text-white rounded-xl font-black uppercase text-[10px] sm:text-xs tracking-widest transition-all flex items-center gap-1 sm:gap-2 shadow-lg shadow-cyan-500/20 touch-manipulation"
               >
                 Draw Lot
-                <Send size={14} />
+                <Send size={12} className="sm:w-3.5 sm:h-3.5" />
               </button>
             </form>
 

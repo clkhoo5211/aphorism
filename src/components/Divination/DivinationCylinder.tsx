@@ -8,10 +8,10 @@ interface DivinationCylinderProps {
 
 export const DivinationCylinder: React.FC<DivinationCylinderProps> = ({ isShaking, onComplete }) => {
   return (
-    <div className="relative w-64 h-80 flex items-center justify-center">
+    <div className="relative w-48 h-64 sm:w-64 sm:h-80 flex items-center justify-center">
       {/* Cylinder Container */}
       <motion.div
-        className="relative w-32 h-64"
+        className="relative w-24 h-48 sm:w-32 sm:h-64"
         animate={isShaking ? {
           rotate: [0, -3, 3, -3, 3, -2, 2, -1, 1, 0],
           y: [0, -2, 2, -2, 2, -1, 1, 0]

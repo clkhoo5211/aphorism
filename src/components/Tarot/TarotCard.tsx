@@ -28,7 +28,7 @@ export const TarotCard: React.FC<TarotCardProps> = ({
   const info = getCardDisplayInfo(card, deckId);
 
   return (
-    <div className="perspective-1000 w-40 h-60 sm:w-56 sm:h-84 md:w-64 md:h-96 cursor-pointer group" onClick={onFlip}>
+    <div className="perspective-1000 w-[100px] h-[150px] xs:w-[120px] xs:h-[180px] sm:w-40 sm:h-60 md:w-56 md:h-84 lg:w-64 lg:h-96 cursor-pointer group touch-manipulation" onClick={onFlip}>
       <motion.div
         className="relative w-full h-full transition-all duration-500 preserve-3d"
         animate={{ rotateY: isFlipped ? 180 : 0 }}

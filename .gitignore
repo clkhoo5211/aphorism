@@ -46,6 +46,11 @@ scripts/
 scraping*.log
 collected_divination_data.json
 minor_arcana_generated.ts
+verification*.log
+verification*.txt
+*_verification_results.json
+*_parsed_data.json
+dev-dist/
 
 # Documentation files (excluded from repository)
 *.md

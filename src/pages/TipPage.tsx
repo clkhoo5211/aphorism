@@ -47,11 +47,11 @@ export const TipPage = () => {
             <Coffee className="w-10 h-10 text-amber-400" />
           </motion.div>
           
-          <h1 className="text-4xl md:text-5xl font-black tracking-tighter">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tighter px-2">
             TIP ME A <span className="text-amber-400">COFFEE</span>
           </h1>
           
-          <p className="text-slate-400 text-sm md:text-base max-w-2xl mx-auto">
+          <p className="text-slate-400 text-xs sm:text-sm md:text-base max-w-2xl mx-auto px-4">
             If you find value in this project, consider supporting its development. 
             Your contributions help keep this platform running and evolving.
           </p>
@@ -62,7 +62,7 @@ export const TipPage = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="bg-slate-900/50 backdrop-blur-sm border border-amber-500/30 rounded-xl p-6 md:p-8 shadow-lg"
+          className="bg-slate-900/50 backdrop-blur-sm border border-amber-500/30 rounded-xl p-4 sm:p-6 md:p-8 shadow-lg"
         >
           <div className="flex items-center gap-3 mb-4">
             <Wallet className="w-5 h-5 text-amber-400" />
@@ -105,7 +105,7 @@ export const TipPage = () => {
             <h3 className="text-sm font-bold text-slate-300 mb-4 uppercase tracking-wider">
               Supported EVM Chains
             </h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 sm:gap-3">
               {EVM_CHAINS.map((chain) => (
                 <motion.a
                   key={chain.name}

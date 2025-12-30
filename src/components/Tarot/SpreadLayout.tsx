@@ -37,10 +37,10 @@ export const SpreadLayout: React.FC<SpreadLayoutProps> = ({
       </div>
 
       {/* Card Layout */}
-      <div className="relative w-full min-h-[400px] py-8">
+      <div className="relative w-full min-h-[300px] sm:min-h-[400px] py-4 sm:py-8">
         <div className={`flex ${
           spread.cardCount <= 3 ? 'justify-center' : 'justify-center flex-wrap'
-        } items-start gap-4 md:gap-6 lg:gap-8`}>
+        } items-start gap-2 sm:gap-4 md:gap-6 lg:gap-8`}>
           {spread.positions.map((position, index) => {
             const drawnCard = drawnCards.find(dc => dc.positionId === position.id);
 
@@ -103,8 +103,8 @@ export const SpreadLayout: React.FC<SpreadLayoutProps> = ({
                     )}
                   </motion.div>
                 ) : (
-                  <div className="w-[140px] h-[210px] border-2 border-dashed border-purple-500/30 rounded-lg flex items-center justify-center bg-slate-900/30">
-                    <span className="text-purple-500/50 text-4xl">?</span>
+                  <div className="w-[100px] h-[150px] sm:w-[120px] sm:h-[180px] md:w-[140px] md:h-[210px] border-2 border-dashed border-purple-500/30 rounded-lg flex items-center justify-center bg-slate-900/30">
+                    <span className="text-purple-500/50 text-2xl sm:text-3xl md:text-4xl">?</span>
                   </div>
                 )}
 
@@ -113,9 +113,9 @@ export const SpreadLayout: React.FC<SpreadLayoutProps> = ({
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-56 text-center"
+                    className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-40 sm:w-48 md:w-56 text-center"
                   >
-                    <p className="text-xs text-slate-400 leading-tight px-2">
+                    <p className="text-[10px] sm:text-xs text-slate-400 leading-tight px-1 sm:px-2">
                       {position.description}
                     </p>
                   </motion.div>
@@ -132,9 +132,9 @@ export const SpreadLayout: React.FC<SpreadLayoutProps> = ({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20 }}
-          className="mt-12 max-w-3xl mx-auto"
+          className="mt-6 sm:mt-12 max-w-3xl mx-auto px-2"
         >
-          <div className="bg-slate-900/80 backdrop-blur-sm border border-cyan-500/30 rounded-xl p-6 shadow-lg">
+          <div className="bg-slate-900/80 backdrop-blur-sm border border-cyan-500/30 rounded-xl p-4 sm:p-6 shadow-lg">
             <div className="flex items-start justify-between mb-4">
               <div>
                 <h4 className="text-lg font-bold text-white mb-1">

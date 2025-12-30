@@ -8,6 +8,9 @@
 body {
   margin: 0;
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  touch-action: manipulation;
 }
 
 @utility perspective-1000 {
@@ -24,4 +27,8 @@ body {
 
 @utility rotate-y-180 {
   transform: rotateY(180deg);
+}
+
+@utility touch-manipulation {
+  touch-action: manipulation;
 }

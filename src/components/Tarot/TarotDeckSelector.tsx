@@ -19,13 +19,13 @@ export const TarotDeckSelector: React.FC<TarotDeckSelectorProps> = ({
   onSelect,
 }) => {
   return (
-    <div className="flex flex-wrap justify-center gap-4 mb-8">
+    <div className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 mb-6 sm:mb-8 px-2">
       {decks.map((deck) => (
         <button
           key={deck.id}
           onClick={() => onSelect(deck.id)}
           className={cn(
-            "group relative px-4 py-2 rounded-lg border transition-all duration-300 flex flex-col items-center text-center max-w-[120px]",
+            "group relative px-3 sm:px-4 py-2 rounded-lg border transition-all duration-300 flex flex-col items-center text-center max-w-[100px] sm:max-w-[120px] touch-manipulation active:scale-95",
             selectedDeckId === deck.id
               ? "bg-cyan-500/10 border-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.3)]"
               : "bg-slate-900 border-slate-700 hover:border-slate-500"

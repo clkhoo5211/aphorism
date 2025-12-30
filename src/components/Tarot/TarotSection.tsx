@@ -76,7 +76,7 @@ export const TarotSection: React.FC = () => {
   };
 
   return (
-    <section className="py-12 px-4 relative overflow-hidden bg-slate-950 min-h-screen">
+    <section className="py-6 sm:py-12 px-3 sm:px-4 relative overflow-hidden bg-slate-950 min-h-screen">
       {/* Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-500/5 blur-[120px] rounded-full pointer-events-none" />
 
@@ -134,13 +134,13 @@ export const TarotSection: React.FC = () => {
 
               {/* Show selected cards preview */}
               {drawnCards.length > 0 && (
-                <div className="mb-8">
-                  <div className="text-center mb-4">
-                    <h3 className="text-lg font-semibold text-purple-300 mb-3">
+                <div className="mb-6 sm:mb-8">
+                  <div className="text-center mb-3 sm:mb-4">
+                    <h3 className="text-base sm:text-lg font-semibold text-purple-300 mb-2 sm:mb-3">
                       Selected Cards ({drawnCards.length}/{selectedSpread.cardCount})
                     </h3>
                   </div>
-                  <div className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
+                  <div className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 max-w-4xl mx-auto">
                     {drawnCards.map((drawnCard, index) => (
                       <motion.div
                         key={index}

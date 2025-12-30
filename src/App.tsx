@@ -13,7 +13,7 @@ function App() {
       <Background />
       <Header />
 
-      <main className="flex-grow container mx-auto px-4 pt-12 pb-24 max-w-5xl">
+      <main className="flex-grow container mx-auto px-3 sm:px-4 pt-6 sm:pt-12 pb-12 sm:pb-24 max-w-5xl">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/tarot" element={<TarotPage />} />
